@@ -11,7 +11,6 @@
 <%!
     Programme programme = ProgrammeRepository.getInstance().getProgrammeByName("BioInformatique");
     CoursRepository coursRepository = programme.getCoursRepository();
-    Cours cours =   coursRepository.getCours().get(0);
 %>
 
     <%------------------- Styling -------------------%>
@@ -40,23 +39,15 @@
             box-shadow: #0B113A;
             height: 100px;
         }
-        .center {
-            margin: 0;
-            position: absolute;
-            left: 50%;
-            -ms-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
-            margin-bottom: 50px;
-        }
         .calendrier{
             padding: 25px;
-        }
+        } .horaire{
+            width: 800px;
+                  }
         .center-button{
-            margin: 0;
-            position: absolute;
-            left: 50%;
-            -ms-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         table, th, td {
             border-collapse: collapse;
@@ -87,23 +78,24 @@
         .scrollable-cours {
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 5 columns */
-            grid-auto-rows: 100px; /* Each item has a height of 100px */
+            grid-auto-rows: 200px; /* Each item has a height of 100px */
             gap: 10px;
-            width: 950px;
+            width: 1010px;
             height: 400px; /* Set a fixed height for the grid */
             overflow-y: auto; /* Enable vertical scrolling */
             padding: 10px;
             box-sizing: border-box;
             background-color: #f8f8f8;
         } .section{
-          margin-top: 20px;
-          padding: 10px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
                   }
         .page-container {
             display: flex;
+            flex-direction: column;
             width: 100%;
             margin: 0 auto;
-            gap: 20px;
         }
     </style>
 </head>
@@ -113,18 +105,21 @@
 <body>
  <h2 class="titre-foncer">Simulateur Horaire <%=programme.getName()%></h2><br><br>
 
- <div class="center">
+
  <div class="page-container">
 
  <div class="section">
+     <div id="Buttons-Sessions" class="center-button">
+         <button id="Selection-Automne" class="button-session-choisi">Automne</button>
+         <button id="Selection-Hiver" class="button-session">Hiver</button>
+         <button id="Selection-Ete" class="button-session">Ete</button>
+     </div><br>
+ </div>
 
-<div id="Horaire">
+ <div class="section">
 
-    <div id="Buttons-Sessions" class="center-button">
-        <button id="Selection-Automne" class="button-session-choisi">Automne</button>
-        <button id="Selection-Hiver" class="button-session">Hiver</button>
-        <button id="Selection-Ete" class="button-session">Ete</button>
-    </div><br>
+<div id="Horaire" class="horaire">
+
 
     <div class="calendrier">
 
@@ -177,12 +172,23 @@
             </table>
 </div>
     </div>
+
 </div>
 
  </div>
 
  <%------------------- Selection de cours -------------------%>
 
+     
+ <div class="section">
+     <div class="zone-cours">
+             <div class="scrollable-cours">
+
+             </div>
+     </div>
+ </div>
+</div>
+ <%------------------- JavaScript -------------------%>
 
 
  <script>
@@ -206,8 +212,10 @@
                 display: flex;
                 margin: 5px;
                 border-radius: 5px;
-                box-shadow: 0 1px 6px black;
+                border-color: black;
+                background-color: white;
                 width: 225px;
+                height: 200px;
             } .infos{
                 margin: 5px;
                 }
@@ -223,68 +231,49 @@
             <div class="cours-card">
                         <div class="infos">
                         <p></p>
-                        <p class="cours-title"><slot name="name"/></p>
-                        <p class="cours-infos">Credits: <slot name="credits"/></p>
-                        <p class="cours-infos">Campus: <slot name="campus"/></p>
-                        <p class="cours-infos">Periode: <slot name="periode"/></p>
+                        <p class="cours-title" id="cours-name"><slot name="name"/></p>
+                        <p class="cours-infos" id="cours-credit">Credits: <slot name="credits"/></p>
+                        <p class="cours-infos" id="cours-campus">Campus: <slot name="campus"/></p>
+                        <p class="cours-infos" id="cours-periode">Periode: <slot name="periode"/></p>
                 </div>
             </div>
         `
          }
-
-
-
      }
-
 
      customElements.define("cours-card", CoursCard)
 
  </script>
 
+ <script>
+     const grid = document.getElementsByClassName("scrollable-cours").item(0);
+ </script>
+
+ <%------------------- Adding cours loop -------------------%>
+
+ <% for (Cours cours : coursRepository.getCours()){ %>
+     <%
+         String coursName = cours.getName();
+         String credit = cours.getCredits();
+         String campus = cours.getCampus();
+         String periode = cours.getPeriode();
+         //System.out.println(coursName);
+     %>
 
 
- <%
-     String coursName = cours.getName();
-     String credit = cours.getCredits();
-     String campus = cours.getCampus();
-     String periode = cours.getPeriode();
- %>
+     <script>
+         newItem = document.createElement("cours-card");
 
+         infos = newItem.getElementsByTagName("p");
 
+         //infos.item(0).innerText = "dasdasdas";
 
+         grid.innerHTML += newItem.outerHTML;
+     </script>
 
-
-
-
-
- <div class="section">
-     <div class="zone-cours">
-         <div class="scrollable-cours">
-
-
-             <cours-card>
-                 <span slot="name"><%=coursName%></span>
-                 <span slot="credits"><%=credit%></span>
-                 <span slot="campus"><%=campus%></span>
-                 <span slot="periode"><%=periode%></span>
-             </cours-card>
-
-
-         </div>
-     </div>
- </div>
-</div>
- <%------------------- JavaScript -------------------%>
-
-
-
-
-
-
-
-
- </div>
-
+<%
+    }
+%>
 
 
 
