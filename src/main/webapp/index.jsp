@@ -31,14 +31,6 @@
             row-gap: 0;
             border: 0px white;
         }
-        .titre-foncer{
-            font-size: 35px;
-            color: white;
-            background-color: #0B113A;
-            text-align: center;
-            box-shadow: #0B113A;
-            height: 100px;
-        }
         .calendrier{
             padding: 25px;
         } .horaire{
@@ -90,6 +82,7 @@
           display: block;
           margin-left: auto;
           margin-right: auto;
+            margin-top: 20px;
                   }
         .page-container {
             display: flex;
@@ -103,9 +96,6 @@
 <%------------------- HTML -------------------%>
 
 <body>
- <h2 class="titre-foncer">Simulateur Horaire <%=programme.getName()%></h2><br><br>
-
-
  <div class="page-container">
 
  <div class="section">
@@ -116,66 +106,7 @@
      </div><br>
  </div>
 
- <div class="section">
-
-<div id="Horaire" class="horaire">
-
-
-    <div class="calendrier">
-
-        <table>
-            <thead>
-            <tr>
-                <th class="time">Heure</th>
-                <th>Dimanche</th>
-                <th>Lundi</th>
-                <th>Mardi</th>
-                <th>Mercredi</th>
-                <th>Jeudi</th>
-                <th>Vendredi</th>
-                <th>Samedi</th>
-            </tr>
-            </thead>
-        </table>
-        <div class="scrollable">
-            <table>
-                <tbody>
-                <!-- Générer des lignes pour chaque créneau de 30 minutes de 7:30 à 20:30 -->
-                <tr><td class="time">07:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">08:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">08:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">09:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">09:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">10:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">10:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">11:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">11:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">12:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">12:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">13:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">13:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">14:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">14:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">15:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">15:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">16:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">16:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">17:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">17:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">18:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">18:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">19:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">19:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">20:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td class="time">20:30</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                </tbody>
-            </table>
-</div>
-    </div>
-
-</div>
-
- </div>
+ <div class="section"><iframe src="https://calendar.google.com/calendar/embed?height=500&wkst=1&ctz=America%2FToronto&bgcolor=%23ffffff&showNav=0&showDate=0&showPrint=0&showCalendars=0&mode=WEEK&showTz=0&showTabs=0&title&showTitle=0&src=OWNiMzQyMDE0YzQ4NGJhNGVlOTI3MWM1MTIwODU4NTFlYjM0YmQyYTQ0MzQ5ZDhmYWNjYzFlYjAyYzViMGEzOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23A79B8E" style="border-width:0" width="800" height="500" frameborder="0" scrolling="no"></iframe></div>
 
  <%------------------- Selection de cours -------------------%>
 
@@ -194,18 +125,35 @@
  <script>
      class CoursCard extends HTMLElement{
 
-         constructor() {
+         constructor(coursName, coursCredit, coursCampus, coursPeriode) {
              super();
+             this._coursName = coursName;
+             this._coursCredit = coursCredit;
+             this._coursCampus = coursCampus;
+             this._coursPeriode = coursPeriode;
              this.shadow = this.attachShadow({ mode: "open" });
-         }
-
-
-         connectedCallback(){
              this.render();
          }
 
-         render(){
 
+         get coursName(){
+             return this._coursName;
+         }
+
+         get coursCredit() {
+             return this._coursCredit;
+         }
+
+         get coursCampus() {
+             return this._coursCampus;
+         }
+
+         get coursPeriode(){
+             return this._coursPeriode;
+         }
+
+
+         render(){
              this.shadow.innerHTML = `
             <style>
             .cours-card{
@@ -217,7 +165,7 @@
                 width: 225px;
                 height: 200px;
             } .infos{
-                margin: 5px;
+                margin: 10px;
                 }
             .cours-title{
                 font-weight: bold;
@@ -231,13 +179,13 @@
             <div class="cours-card">
                         <div class="infos">
                         <p></p>
-                        <p class="cours-title" id="cours-name"><slot name="name"/></p>
-                        <p class="cours-infos" id="cours-credit">Credits: <slot name="credits"/></p>
+                        <p class="cours-title" id="cours-name">#Name#</p>
+                        <p class="cours-infos" id="cours-credit">Credits: <slot name="credits"/>50</p>
                         <p class="cours-infos" id="cours-campus">Campus: <slot name="campus"/></p>
                         <p class="cours-infos" id="cours-periode">Periode: <slot name="periode"/></p>
                 </div>
             </div>
-        `
+        `;
          }
      }
 
@@ -247,6 +195,7 @@
 
  <script>
      const grid = document.getElementsByClassName("scrollable-cours").item(0);
+     const AllCoursCards = [];
  </script>
 
  <%------------------- Adding cours loop -------------------%>
@@ -257,16 +206,15 @@
          String credit = cours.getCredits();
          String campus = cours.getCampus();
          String periode = cours.getPeriode();
-         //System.out.println(coursName);
      %>
 
 
      <script>
-         newItem = document.createElement("cours-card");
+         newItem = new CoursCard("<%=coursName%>", "<%=credit%>", "<%=campus%>", "<%=periode%>");
 
-         infos = newItem.getElementsByTagName("p");
+         newItem.slot.replace("credits", "<%=credit%>");
 
-         //infos.item(0).innerText = "dasdasdas";
+         AllCoursCards.push(newItem);
 
          grid.innerHTML += newItem.outerHTML;
      </script>
