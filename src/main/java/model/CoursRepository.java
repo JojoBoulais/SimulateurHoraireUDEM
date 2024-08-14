@@ -71,6 +71,22 @@ public class CoursRepository{
         }
         return cours;
     }
+
+    public Cours getCoursByName(String name){
+
+        Cours foundCours = null;
+
+        for(Cours c : this.getCours()){
+            if (c.getName().equals(name)){
+                foundCours = c;
+                break;
+            }
+        }
+
+        return foundCours;
+
+    }
+
 }
 
 

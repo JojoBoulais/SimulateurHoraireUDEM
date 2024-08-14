@@ -13,6 +13,10 @@
     CoursRepository coursRepository = programme.getCoursRepository();
 %>
 
+
+
+
+
     <%------------------- Styling -------------------%>
     <style type="text/css">
         .button-session{
@@ -27,7 +31,7 @@
             font-size: 22px;
             color: white;
             text-align: center;
-            background-color: #0057AC;
+            background-color: #e4e8fe;
             row-gap: 0;
             border: 0px white;
         }
@@ -58,21 +62,12 @@
             text-align: center;
             border: 1px dashed black;
         }
-        .time{
-            background-color: #e5f0f8;
-            color: #0B113A;
-        }
-        .scrollable {
-            max-height: 350px; /* Ajustez la hauteur si nécessaire */
-            overflow-y: auto;
-            width: 102%;
-        }
         .scrollable-cours {
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 5 columns */
             grid-auto-rows: 200px; /* Each item has a height of 100px */
             gap: 10px;
-            width: 1010px;
+            width: 1015px;
             height: 400px; /* Set a fixed height for the grid */
             overflow-y: auto; /* Enable vertical scrolling */
             padding: 10px;
@@ -108,21 +103,12 @@
 
  <div class="section"><iframe src="https://calendar.google.com/calendar/embed?height=500&wkst=1&ctz=America%2FToronto&bgcolor=%23ffffff&showNav=0&showDate=0&showPrint=0&showCalendars=0&mode=WEEK&showTz=0&showTabs=0&title&showTitle=0&src=OWNiMzQyMDE0YzQ4NGJhNGVlOTI3MWM1MTIwODU4NTFlYjM0YmQyYTQ0MzQ5ZDhmYWNjYzFlYjAyYzViMGEzOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23A79B8E" style="border-width:0" width="800" height="500" frameborder="0" scrolling="no"></iframe></div>
 
- <%------------------- Selection de cours -------------------%>
 
-     
- <div class="section">
-     <div class="zone-cours">
-             <div class="scrollable-cours">
-
-             </div>
-     </div>
- </div>
-</div>
  <%------------------- JavaScript -------------------%>
 
 
  <script>
+
      class CoursCard extends HTMLElement{
 
          constructor(coursName, coursCredit, coursCampus, coursPeriode) {
@@ -160,11 +146,19 @@
                 display: flex;
                 margin: 5px;
                 border-radius: 5px;
-                border-color: black;
+                border: 1px solid #e4e8fe;
                 background-color: white;
                 width: 225px;
                 height: 200px;
-            } .infos{
+            }
+            .cours-card:hover{
+            border: 3px solid #e4e8fe;
+            cursor: pointer;
+                width: 221px;
+                height: 197px;
+                animation: 4s linear;
+            }
+            .infos{
                 margin: 10px;
                 }
             .cours-title{
@@ -176,11 +170,11 @@
 
             </style>
 
-            <div class="cours-card">
+            <div class="cours-card" id="frame">
                         <div class="infos">
                         <p></p>
-                        <p class="cours-title" id="cours-name">#Name#</p>
-                        <p class="cours-infos" id="cours-credit">Credits: <slot name="credits"/>50</p>
+                        <p class="cours-title" id="cours-name"><slot name="name"/></p>
+                        <p class="cours-infos" id="cours-credit">Credits: <slot name="credits"/></p>
                         <p class="cours-infos" id="cours-campus">Campus: <slot name="campus"/></p>
                         <p class="cours-infos" id="cours-periode">Periode: <slot name="periode"/></p>
                 </div>
@@ -189,9 +183,30 @@
          }
      }
 
-     customElements.define("cours-card", CoursCard)
+     customElements.define("cours-card", CoursCard);
+
+     function handleForm(event) { event.preventDefault(); }
+
+     function clickOnCours(element){
+
+        element.style.color = "red";
+
+         myForm = document.forms["myForm"];
+
+         coursName = document.createElement('input');
+         coursName.type = 'hidden';
+         coursName.name = "age";
+         coursName.value = element.id;
+
+         myForm.append(coursName);
+
+         myForm.submit();
+     }
 
  </script>
+
+
+
 
  <script>
      const grid = document.getElementsByClassName("scrollable-cours").item(0);
@@ -199,6 +214,17 @@
  </script>
 
  <%------------------- Adding cours loop -------------------%>
+
+
+     <%------------------- Selection de cours -------------------%>
+
+
+     <div class="section">
+
+         <form action="SimulateurHoraireServlet" method="post" name="myForm"></form>
+
+         <div class="zone-cours">
+             <div class="scrollable-cours">
 
  <% for (Cours cours : coursRepository.getCours()){ %>
      <%
@@ -209,19 +235,25 @@
      %>
 
 
-     <script>
-         newItem = new CoursCard("<%=coursName%>", "<%=credit%>", "<%=campus%>", "<%=periode%>");
+                 <cours-card id="<%=coursName%>" onclick="clickOnCours(this)">
+                     <span slot="name"><%=coursName%></span>
+                     <span slot="credits"><%=credit%></span>
+                     <span slot="campus"><%=campus%></span>
+                     <span slot="periode"><%=periode%></span>
+                 </cours-card>
 
-         newItem.slot.replace("credits", "<%=credit%>");
 
-         AllCoursCards.push(newItem);
 
-         grid.innerHTML += newItem.outerHTML;
-     </script>
 
 <%
     }
 %>
+
+             </div>
+         </div>
+     </div>
+
+ </div>
 
 
 
