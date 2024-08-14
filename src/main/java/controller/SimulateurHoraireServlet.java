@@ -16,52 +16,23 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 @WebServlet(name="SimulateurHoraireServlet", urlPatterns = "/")
 public class SimulateurHoraireServlet  extends HttpServlet {
 
     Programme programme = ProgrammeRepository.getInstance().getProgrammeByName("BioInformatique");
     CoursRepository coursRepository = programme.getCoursRepository();
-    String selectedCoursFile = "C:\\Users\\Jordan\\IdeaProjects\\SimulateurHoraireUDEM\\src\\main\\resources\\selectedCours.txt";
     ArrayList<Cours> selectedCours = new ArrayList<>();
-    String credentialsFile = "C:\\Users\\Jordan\\IdeaProjects\\SimulateurHoraireUDEM\\src\\main\\resources\\client_secret_1047240827751-024u23elbhneeauq43ofor2g7er2sjif.apps.googleusercontent.com.json";
 
-    private ActionResult OauthRedirect() {
-
-        Gson gson = new Gson().newBuilder().setPrettyPrinting().create();
-
-        String client_id = "";
-
-        try {
-            String content = Files.readString(Paths.get(this.credentialsFile));
-
-            Object json = gson.fromJson(content, Object.class);
-            String jsonString = json.toString();
-
-            String splitted = jsonString.split("client_id=")[1];
-            client_id = splitted.split(",")[0];
-
-        } catch (IOException e){
-            System.out.println(e);
-        }
-
-        var redirectUrl = "https://accounts.google.com/o/oauth2/auth" +
-                            "scope=https://www.google.com/auth/calendar+https://www.google.com/auth/calendar.event&" +
-                            "acces_type=online&" +
-                            "include_granted_scopes=true&" +
-                            "response_type_code&" +
-                            "state=there&" +
-                            "redirect_uri=https://localhost:8080/oauth/callback&" +
-                            "client_id=" + client_id;
-
-        return Redirect(redirectUrl);
-    }
+    // Enregistrement des cours selectionners (pourrais etre remplacer simplement par les events du calendrier)
+    String selectedCoursFile = "C:\\Users\\Jordan\\IdeaProjects\\SimulateurHoraireUDEM\\src\\main\\resources\\selectedCours.txt";
+    String credentialsFile = "C:\\Users\\Jordan\\IdeaProjects\\SimulateurHoraireUDEM\\src\\main\\resources\\udemsimulateurhoraire-c651de8cdfde.json";
+    String CALENDAR_ID ="9cb342014c484ba4ee9271c512085851eb34bd2a44349d8faccc1eb02c5b0a39@group.calendar.google.com";
 
     private void writeSelectedCours(String coursName){
         try {
