@@ -26,19 +26,25 @@
     <style type="text/css">
         .button-session{
             font-size: 22px;
-            color: #0057AC;
+            color: #59629e;
             text-align: center;
             background-color: white;
             row-gap: 0;
             border: 0px white;
         }
+        .button-session:hover{
+            cursor: pointer;
+        }
         .button-session-choisi{
             font-size: 22px;
             color: white;
             text-align: center;
-            background-color: #e4e8fe;
+            background-color: #59629e;
             row-gap: 0;
             border: 0px white;
+        }
+        .button-session-choisi:hover{
+            cursor: pointer;
         }
         .clearEvents{
             font-size: 22px;
@@ -48,6 +54,10 @@
             row-gap: 0;
             width: 100px;
             height: 35px;
+            display: block;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .clearEvents:hover{
             border: 3px solid #e66b6b;
@@ -59,9 +69,10 @@
             width: 800px;
                   }
         .center-button{
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            position: relative;
+            left: 38%;
         }
         table, th, td {
             border-collapse: collapse;
@@ -86,20 +97,18 @@
             grid-auto-rows: 200px; /* Each item has a height of 100px */
             gap: 10px;
             width: 1015px;
-            height: 350px; /* Set a fixed height for the grid */
+            height: 800px; /* Set a fixed height for the grid */
             overflow-y: auto; /* Enable vertical scrolling */
             padding: 10px;
             box-sizing: border-box;
             background-color: #f8f8f8;
         } .section{
           display: block;
-          margin-left: auto;
-          margin-right: auto;
-            margin-top: 10px;
+            margin-left: 10px;
                   }
         .page-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             width: 100%;
             margin: 0 auto;
         }
@@ -111,39 +120,7 @@
 <body>
  <div class="page-container">
 
- <div class="section">
-     <div id="Buttons-Sessions" class="center-button">
-         <button id="Selection-Automne" class="button-session-choisi">Automne</button>
-         <button id="Selection-Hiver" class="button-session">Hiver</button>
-         <button id="Selection-Ete" class="button-session">Ete</button>
-     </div><br>
- </div>
 
- <div class="section"><iframe src="https://calendar.google.com/calendar/embed?height=450&wkst=1&ctz=America%2FToronto&bgcolor=%23ffffff&mode=WEEK&showTitle=0&showDate=0&showCalendars=0&showTz=0&showTabs=0&showPrint=0&src=OWNiMzQyMDE0YzQ4NGJhNGVlOTI3MWM1MTIwODU4NTFlYjM0YmQyYTQ0MzQ5ZDhmYWNjYzFlYjAyYzViMGEzOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5" style="border:solid 1px #777" width="800" height="450" frameborder="0" scrolling="no"></iframe></div>
-
-
-     <script>
-
-     function clearEvents(){
-
-         myForm = document.forms["myForm"];
-
-         action = document.createElement('input');
-         action.type = 'hidden';
-         action.name = "action";
-         action.value = "clearAllCours";
-
-         myForm.append(action);
-         myForm.submit();
-     }
-
-     </script>
-
-
-
-     <div class="section">
-         <button id="clearEvents" class="clearEvents" onclick="clearEvents()">Clear</button>
-     </div>
 
 
  <%------------------- JavaScript -------------------%>
@@ -262,6 +239,24 @@
      const AllCoursCards = [];
  </script>
 
+
+     <script>
+
+         function clearEvents(){
+
+             myForm = document.forms["myForm"];
+
+             action = document.createElement('input');
+             action.type = 'hidden';
+             action.name = "action";
+             action.value = "clearAllCours";
+
+             myForm.append(action);
+             myForm.submit();
+         }
+
+     </script>
+
  <%------------------- Adding cours loop -------------------%>
 
 
@@ -305,9 +300,25 @@
 
              </div>
          </div>
+         <button id="clearEvents" class="clearEvents" onclick="clearEvents()">Clear</button>
+
+     </div>
+
+
+
+     <div class="section">
+         <div id="Buttons-Sessions" class="center-button">
+             <button id="Selection-Automne" class="button-session-choisi">Automne</button>
+             <button id="Selection-Hiver" class="button-session">Hiver</button>
+             <button id="Selection-Ete" class="button-session">Ete</button>
+         </div>
+         <iframe src="https://calendar.google.com/calendar/embed?height=750&wkst=1&ctz=America%2FToronto&bgcolor=%23ffffff&mode=WEEK&showTitle=0&showDate=0&showCalendars=0&showTz=0&showTabs=0&showPrint=0&src=OWNiMzQyMDE0YzQ4NGJhNGVlOTI3MWM1MTIwODU4NTFlYjM0YmQyYTQ0MzQ5ZDhmYWNjYzFlYjAyYzViMGEzOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5" style="border:solid 1px #777" width="800" height="750" frameborder="0" scrolling="no"></iframe>
+
      </div>
 
  </div>
+
+
 
 
 

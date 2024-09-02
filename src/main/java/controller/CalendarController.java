@@ -54,7 +54,7 @@ public class CalendarController {
     private static final String CREDENTIALS_FILE_PATH = "/client_secret_1047240827751-024u23elbhneeauq43ofor2g7er2sjif.apps.googleusercontent.com.json";
 
     private static final String CALENDAR_ID = "9cb342014c484ba4ee9271c512085851eb34bd2a44349d8faccc1eb02c5b0a39@group.calendar.google.com";
-
+    private Calendar service = null;
 
     private static final HashMap<String, DayOfWeek> WEEK_DAYS_HASHTABLE = new HashMap<>()
     {{put("Lundi", DayOfWeek.MONDAY);
@@ -97,7 +97,9 @@ public class CalendarController {
 
     public Calendar getService(){
 
-        Calendar service = null;
+        if (service != null){
+            return service;
+        }
 
         try {
             // Build a new authorized API client service.
@@ -106,6 +108,7 @@ public class CalendarController {
                     new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                             .setApplicationName(APPLICATION_NAME)
                             .build();
+
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -114,6 +117,8 @@ public class CalendarController {
         } catch (Exception e){
             e.printStackTrace();
         }
+
+
 
         return service;
     }
@@ -159,10 +164,11 @@ public class CalendarController {
     public ArrayList<Event> getAllEvent(){
         ArrayList<Event> allEvents = new ArrayList<>();
 
+        Calendar service = getService();
         String pageToken = null;
         try {
             do {
-                Events events = getService().events().list(CALENDAR_ID).setPageToken(pageToken).execute();
+                Events events = service.events().list(CALENDAR_ID).setPageToken(pageToken).execute();
                 List<Event> items = events.getItems();
                 for (Event event : items) {
                     allEvents.add(event);
@@ -177,14 +183,22 @@ public class CalendarController {
     }
 
     public void clearEvents(){
+
+        Calendar service = getService();
+        long beginning = System.nanoTime();
+
         for (Event event : getAllEvent()) {
             try {
-                getService().events().delete(CALENDAR_ID, event.getId()).execute();
+                service.events().delete(CALENDAR_ID, event.getId()).execute();
             }
             catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
+        long end = System.nanoTime();
+        System.out.println( ( (end - beginning) * Math.pow(10, -9) ) );
+
     }
 
 
@@ -198,6 +212,7 @@ public class CalendarController {
                     break;
             }
         }
+
 
         return coursThere;
     }
@@ -220,11 +235,13 @@ public class CalendarController {
 
     public void removeCoursEvent(String coursName){
 
+        Calendar service = getService();
+
         for(Event event : getAllEvent()){
 
             if (event.getSummary().equals(coursName)){
                 try {
-                    getService().events().delete(CALENDAR_ID, event.getId()).execute();
+                    service.events().delete(CALENDAR_ID, event.getId()).execute();
                 }
                 catch (IOException e) {
                     e.printStackTrace();
