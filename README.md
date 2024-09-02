@@ -8,9 +8,10 @@ https://admission.umontreal.ca/programmes/baccalaureat-en-bio-informatique/struc
 https://github.com/user-attachments/assets/728d02fb-c714-419c-b5cb-7e9f37910ec4
 
 Working Features:
-- Ajout d'un cours et de ses sceance sur le google calendar
-- Ajout d'un cours et de ses sceance sur le google calendar
+- Ajout d'un cours et de ses scéance sur le google calendar
+- Suppression d'un cours et de ses scéance sur le google calendar
 
-To FIX:
+TO DO:
 - Seul la session d'automne est disponible
 - Seul la premiere Section d'un cours est disponible (on ne peut choisir entre plusieurs sceances)
+- Deploiement
