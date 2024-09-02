@@ -80,10 +80,10 @@ public class Cours {
             trimestres += t.toString();
         }
 
-        String coursCeparator = "********************************************\n" +
+        String coursSeparator = "********************************************\n" +
                                 "********************************************\n";
 
-        return coursCeparator + this.name + " | Crédits: " + this.credits + "\n\n" + trimestres + coursCeparator;
+        return coursSeparator + this.name + " | Crédits: " + this.credits + "\n\n" + trimestres + coursSeparator;
 
     }
 

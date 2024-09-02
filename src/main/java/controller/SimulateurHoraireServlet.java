@@ -1,11 +1,9 @@
 package controller;
 
+import com.google.api.services.calendar.model.Event;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import model.CoursRepository;
-import model.Programme;
-import model.ProgrammeRepository;
-import model.Cours;
+import model.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -13,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -112,30 +111,98 @@ public class SimulateurHoraireServlet  extends HttpServlet {
         }
     }
 
+    public boolean containsSameSceance(ArrayList<Sceance> addedSceance, Sceance sceance){
+
+        boolean alreadyAdded = false;
+
+        for (Sceance sc : addedSceance){
+
+            if (sc.getJour().equals(sceance.getJour())
+                    && sc.getHeureDebut().equals(sceance.getHeureDebut())
+                    && sc.getHeureFin().equals(sceance.getHeureFin())){
+
+                alreadyAdded = true;
+                break;
+            }
+
+        }
+
+
+        return alreadyAdded;
+
+    }
+
+
+    public void addCours(CalendarController calendarController, String coursName){
+        Cours cours = coursRepository.getCoursByName(coursName);
+
+        ArrayList<Trimestre> trimestres = cours.getTrimestres();
+
+        Trimestre automne = null;
+
+        for (Trimestre trimestre : trimestres) {
+
+            if (trimestre.getSaison().equals("Automne")) {
+                automne = trimestre;
+                break;
+            }
+
+        }
+
+        if (automne != null) {
+            SectionTrimestre premiereSection = automne.getSections().get(0);
+            ArrayList<Sceance> sceances = premiereSection.getSceances();
+            ArrayList<Sceance> addedSceance = new ArrayList<>();
+            for (Sceance sceance : sceances) {
+                if (containsSameSceance(addedSceance, sceance)) {
+                    continue;
+                }
+                // Adding to calendar here
+                addedSceance.add(sceance);
+                calendarController.addSceance(cours, sceance);
+
+            }
+        }
+    }
+
     // ------------------------------------------------------------------------------------------
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        System.out.println("fafafasfa");
-        String coursName = request.getParameter("age");
-        System.out.println(coursName);
 
-        if (coursAlreadySelected(coursName)){
-            removeSelectedCours(coursName);
-            return;
+        String action = request.getParameter("action");
+        CalendarController calendarController = new CalendarController();
+
+        // Adding/Removing Cours
+        if (action.equals("addCours")) {
+            String coursName = request.getParameter("coursName");
+
+            boolean alreadyThere = calendarController.coursAlreadyThere(coursName);
+
+            if (alreadyThere){
+                calendarController.removeCoursEvent(coursName);
+            }
+            else {
+                addCours(calendarController, coursName);
+            }
+
+
         }
 
-        writeSelectedCours(coursName);
+        // Clearing everything
+        else if (action.equals("clearAllCours")) {
+            System.out.println("Clearing everything!!!");
+            calendarController.clearEvents();
+        }
+
+        // Refresh page
+        response.sendRedirect("http://localhost:8080/");
     }
+
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        selectedCours = new ArrayList<>();
-        readSelectedCours();
 
-        // Adding to google calendar here
 
     }
-
-
-
 
 }

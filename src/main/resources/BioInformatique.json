@@ -54,7 +54,7 @@
                 "heureDebut": "12 h 30",
                 "heureFin": "14 h 29",
                 "dateDebut": "09/09/2024",
-                "dateFin": "18/10/2024"
+                "dateFin": "11/10/2024"
               },
               {
                 "jour": "Jeudi",
@@ -1113,7 +1113,7 @@
                 "heureDebut": "8 h 30",
                 "heureFin": "9 h 30",
                 "dateDebut": "10/01/2025",
-                "dateFin": "28/02/2025"
+                "dateFin": "21/02/2025"
               },
               {
                 "jour": "Lundi",
@@ -1121,6 +1121,13 @@
                 "heureFin": "12 h 29",
                 "dateDebut": "13/01/2025",
                 "dateFin": "21/02/2025"
+              },
+              {
+                "jour": "Vendredi",
+                "heureDebut": "8 h 30",
+                "heureFin": "9 h 29",
+                "dateDebut": "28/02/2025",
+                "dateFin": "28/02/2025"
               },
               {
                 "jour": "Lundi",
@@ -1501,7 +1508,7 @@
                 "heureDebut": "12 h 30",
                 "heureFin": "15 h 29",
                 "dateDebut": "24/03/2025",
-                "dateFin": "11/04/2025"
+                "dateFin": "09/04/2025"
               }
             ]
           },
@@ -1555,6 +1562,13 @@
                 "heureDebut": "12 h 30",
                 "heureFin": "14 h 29",
                 "dateDebut": "03/09/2024",
+                "dateFin": "20/09/2024"
+              },
+              {
+                "jour": "Mardi",
+                "heureDebut": "12 h 30",
+                "heureFin": "14 h 29",
+                "dateDebut": "23/09/2024",
                 "dateFin": "18/10/2024"
               },
               {
@@ -1562,6 +1576,13 @@
                 "heureDebut": "12 h 30",
                 "heureFin": "14 h 29",
                 "dateDebut": "28/10/2024",
+                "dateFin": "08/11/2024"
+              },
+              {
+                "jour": "Mardi",
+                "heureDebut": "12 h 30",
+                "heureFin": "14 h 30",
+                "dateDebut": "11/11/2024",
                 "dateFin": "15/11/2024"
               }
             ]
@@ -2610,14 +2631,14 @@
                 "heureDebut": "12 h 30",
                 "heureFin": "16 h 29",
                 "dateDebut": "03/09/2024",
-                "dateFin": "18/10/2024"
+                "dateFin": "11/10/2024"
               },
               {
                 "jour": "Jeudi",
                 "heureDebut": "12 h 30",
                 "heureFin": "16 h 29",
-                "dateDebut": "04/11/2024",
-                "dateFin": "06/12/2024"
+                "dateDebut": "28/10/2024",
+                "dateFin": "29/11/2024"
               }
             ]
           },
@@ -3030,6 +3051,20 @@
                 "heureDebut": "9 h 30",
                 "heureFin": "11 h 29",
                 "dateDebut": "16/01/2025",
+                "dateFin": "23/01/2025"
+              },
+              {
+                "jour": "Jeudi",
+                "heureDebut": "9 h 30",
+                "heureFin": "11 h 29",
+                "dateDebut": "30/01/2025",
+                "dateFin": "30/01/2025"
+              },
+              {
+                "jour": "Jeudi",
+                "heureDebut": "9 h 30",
+                "heureFin": "11 h 29",
+                "dateDebut": "06/02/2025",
                 "dateFin": "13/02/2025"
               },
               {
@@ -4966,6 +5001,20 @@
                 "heureDebut": "13 h 30",
                 "heureFin": "15 h 29",
                 "dateDebut": "04/11/2024",
+                "dateFin": "04/11/2024"
+              },
+              {
+                "jour": "Lundi",
+                "heureDebut": "13 h 30",
+                "heureFin": "15 h 29",
+                "dateDebut": "11/11/2024",
+                "dateFin": "11/11/2024"
+              },
+              {
+                "jour": "Lundi",
+                "heureDebut": "13 h 30",
+                "heureFin": "15 h 29",
+                "dateDebut": "18/11/2024",
                 "dateFin": "09/12/2024"
               }
             ]
@@ -5152,6 +5201,13 @@
             "name": "Section B",
             "sceances": [
               {
+                "jour": "Vendredi",
+                "heureDebut": "12 h 30",
+                "heureFin": "15 h 29",
+                "dateDebut": "13/01/2025",
+                "dateFin": "17/01/2025"
+              },
+              {
                 "jour": "Lundi",
                 "heureDebut": "12 h 30",
                 "heureFin": "15 h 29",
@@ -5160,9 +5216,16 @@
               },
               {
                 "jour": "Vendredi",
-                "heureDebut": "10 h 30",
-                "heureFin": "13 h 29",
-                "dateDebut": "13/01/2025",
+                "heureDebut": "12 h 30",
+                "heureFin": "15 h 29",
+                "dateDebut": "20/01/2025",
+                "dateFin": "31/01/2025"
+              },
+              {
+                "jour": "Vendredi",
+                "heureDebut": "12 h 30",
+                "heureFin": "15 h 29",
+                "dateDebut": "03/02/2025",
                 "dateFin": "14/02/2025"
               }
             ]
@@ -5484,6 +5547,13 @@
                 "heureDebut": "12 h 30",
                 "heureFin": "15 h 29",
                 "dateDebut": "03/09/2024",
+                "dateFin": "06/09/2024"
+              },
+              {
+                "jour": "Jeudi",
+                "heureDebut": "12 h 30",
+                "heureFin": "15 h 29",
+                "dateDebut": "09/09/2024",
                 "dateFin": "18/10/2024"
               },
               {
@@ -5938,15 +6008,15 @@
             "sceances": [
               {
                 "jour": "Jeudi",
-                "heureDebut": "8 h 30",
-                "heureFin": "11 h 29",
+                "heureDebut": "12 h 30",
+                "heureFin": "15 h 29",
                 "dateDebut": "09/01/2025",
                 "dateFin": "27/02/2025"
               },
               {
                 "jour": "Jeudi",
-                "heureDebut": "8 h 30",
-                "heureFin": "11 h 29",
+                "heureDebut": "12 h 30",
+                "heureFin": "15 h 29",
                 "dateDebut": "13/03/2025",
                 "dateFin": "10/04/2025"
               }
@@ -6466,14 +6536,14 @@
                 "heureDebut": "8 h 30",
                 "heureFin": "11 h 29",
                 "dateDebut": "03/09/2024",
-                "dateFin": "18/10/2024"
+                "dateFin": "11/10/2024"
               },
               {
                 "jour": "Vendredi",
                 "heureDebut": "8 h 30",
                 "heureFin": "11 h 29",
-                "dateDebut": "04/11/2024",
-                "dateFin": "06/12/2024"
+                "dateDebut": "28/10/2024",
+                "dateFin": "09/12/2024"
               }
             ]
           }
@@ -6527,13 +6597,13 @@
                 "heureDebut": "8 h 30",
                 "heureFin": "11 h 29",
                 "dateDebut": "03/09/2024",
-                "dateFin": "18/10/2024"
+                "dateFin": "11/10/2024"
               },
               {
                 "jour": "Jeudi",
                 "heureDebut": "8 h 30",
                 "heureFin": "11 h 29",
-                "dateDebut": "01/11/2024",
+                "dateDebut": "28/10/2024",
                 "dateFin": "06/12/2024"
               }
             ]
@@ -7685,7 +7755,14 @@
                 "heureDebut": "16 h 00",
                 "heureFin": "18 h 59",
                 "dateDebut": "28/10/2024",
-                "dateFin": "09/12/2024"
+                "dateFin": "01/11/2024"
+              },
+              {
+                "jour": "Lundi",
+                "heureDebut": "16 h 00",
+                "heureFin": "18 h 59",
+                "dateDebut": "11/11/2024",
+                "dateFin": "16/12/2024"
               }
             ]
           },
@@ -7697,14 +7774,14 @@
                 "heureDebut": "8 h 30",
                 "heureFin": "11 h 29",
                 "dateDebut": "03/09/2024",
-                "dateFin": "18/10/2024"
+                "dateFin": "10/10/2024"
               },
               {
                 "jour": "Jeudi",
                 "heureDebut": "8 h 30",
                 "heureFin": "11 h 29",
                 "dateDebut": "28/10/2024",
-                "dateFin": "09/12/2024"
+                "dateFin": "06/12/2024"
               }
             ]
           },
@@ -7722,7 +7799,7 @@
                 "jour": "Mardi",
                 "heureDebut": "8 h 30",
                 "heureFin": "11 h 29",
-                "dateDebut": "28/10/2024",
+                "dateDebut": "04/11/2024",
                 "dateFin": "09/12/2024"
               }
             ]
@@ -8351,7 +8428,7 @@
                 "jour": "Mardi",
                 "heureDebut": "12 h 30",
                 "heureFin": "15 h 29",
-                "dateDebut": "10/03/2025",
+                "dateDebut": "17/03/2025",
                 "dateFin": "18/04/2025"
               }
             ]
@@ -9026,7 +9103,7 @@
                 "heureDebut": "9 h 30",
                 "heureFin": "10 h 29",
                 "dateDebut": "10/01/2025",
-                "dateFin": "14/02/2025"
+                "dateFin": "10/01/2025"
               },
               {
                 "jour": "Lundi",
@@ -9034,6 +9111,13 @@
                 "heureFin": "15 h 29",
                 "dateDebut": "13/01/2025",
                 "dateFin": "24/02/2025"
+              },
+              {
+                "jour": "Vendredi",
+                "heureDebut": "9 h 30",
+                "heureFin": "10 h 29",
+                "dateDebut": "17/01/2025",
+                "dateFin": "14/02/2025"
               },
               {
                 "jour": "Vendredi",
@@ -9066,6 +9150,13 @@
                 "heureDebut": "10 h 30",
                 "heureFin": "12 h 29",
                 "dateDebut": "10/01/2025",
+                "dateFin": "10/01/2025"
+              },
+              {
+                "jour": "Vendredi",
+                "heureDebut": "10 h 30",
+                "heureFin": "12 h 29",
+                "dateDebut": "17/01/2025",
                 "dateFin": "14/02/2025"
               },
               {
@@ -9634,7 +9725,7 @@
                 "jour": "Jeudi",
                 "heureDebut": "12 h 30",
                 "heureFin": "14 h 29",
-                "dateDebut": "12/09/2024",
+                "dateDebut": "05/09/2024",
                 "dateFin": "17/10/2024"
               },
               {
@@ -9649,6 +9740,20 @@
                 "heureDebut": "12 h 30",
                 "heureFin": "14 h 29",
                 "dateDebut": "31/10/2024",
+                "dateFin": "21/11/2024"
+              },
+              {
+                "jour": "Jeudi",
+                "heureDebut": "12 h 30",
+                "heureFin": "14 h 29",
+                "dateDebut": "28/11/2024",
+                "dateFin": "28/11/2024"
+              },
+              {
+                "jour": "Jeudi",
+                "heureDebut": "12 h 30",
+                "heureFin": "14 h 29",
+                "dateDebut": "05/12/2024",
                 "dateFin": "05/12/2024"
               }
             ]

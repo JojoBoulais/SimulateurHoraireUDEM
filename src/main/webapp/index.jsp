@@ -1,7 +1,11 @@
+<%--@elvariable id="cardColor" type=""--%>
+<%--@elvariable id="cardTextColor" type=""--%>
 <%@ page import="model.Cours" %>
 <%@ page import="model.CoursRepository" %>
 <%@ page import="model.Programme" %>
 <%@ page import="model.ProgrammeRepository" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="controller.CalendarController" %>
 
 <html>
 
@@ -13,9 +17,10 @@
     CoursRepository coursRepository = programme.getCoursRepository();
 %>
 
-
-
-
+<%
+    CalendarController calendarController = new CalendarController();
+    ArrayList<String> selectedCours = calendarController.getSelectedCoursName();
+    System.out.println(selectedCours); %>
 
     <%------------------- Styling -------------------%>
     <style type="text/css">
@@ -34,6 +39,19 @@
             background-color: #e4e8fe;
             row-gap: 0;
             border: 0px white;
+        }
+        .clearEvents{
+            font-size: 22px;
+            color: white;
+            text-align: center;
+            background-color: #c74e4e;
+            row-gap: 0;
+            width: 100px;
+            height: 35px;
+        }
+        .clearEvents:hover{
+            border: 3px solid #e66b6b;
+            cursor: pointer;
         }
         .calendrier{
             padding: 25px;
@@ -68,7 +86,7 @@
             grid-auto-rows: 200px; /* Each item has a height of 100px */
             gap: 10px;
             width: 1015px;
-            height: 400px; /* Set a fixed height for the grid */
+            height: 350px; /* Set a fixed height for the grid */
             overflow-y: auto; /* Enable vertical scrolling */
             padding: 10px;
             box-sizing: border-box;
@@ -77,7 +95,7 @@
           display: block;
           margin-left: auto;
           margin-right: auto;
-            margin-top: 20px;
+            margin-top: 10px;
                   }
         .page-container {
             display: flex;
@@ -101,7 +119,31 @@
      </div><br>
  </div>
 
- <div class="section"><iframe src="https://calendar.google.com/calendar/embed?height=500&wkst=1&ctz=America%2FToronto&bgcolor=%23ffffff&showNav=0&showDate=0&showPrint=0&showCalendars=0&mode=WEEK&showTz=0&showTabs=0&title&showTitle=0&src=OWNiMzQyMDE0YzQ4NGJhNGVlOTI3MWM1MTIwODU4NTFlYjM0YmQyYTQ0MzQ5ZDhmYWNjYzFlYjAyYzViMGEzOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23A79B8E" style="border-width:0" width="800" height="500" frameborder="0" scrolling="no"></iframe></div>
+ <div class="section"><iframe src="https://calendar.google.com/calendar/embed?height=450&wkst=1&ctz=America%2FToronto&bgcolor=%23ffffff&mode=WEEK&showTitle=0&showDate=0&showCalendars=0&showTz=0&showTabs=0&showPrint=0&src=OWNiMzQyMDE0YzQ4NGJhNGVlOTI3MWM1MTIwODU4NTFlYjM0YmQyYTQ0MzQ5ZDhmYWNjYzFlYjAyYzViMGEzOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5" style="border:solid 1px #777" width="800" height="450" frameborder="0" scrolling="no"></iframe></div>
+
+
+     <script>
+
+     function clearEvents(){
+
+         myForm = document.forms["myForm"];
+
+         action = document.createElement('input');
+         action.type = 'hidden';
+         action.name = "action";
+         action.value = "clearAllCours";
+
+         myForm.append(action);
+         myForm.submit();
+     }
+
+     </script>
+
+
+
+     <div class="section">
+         <button id="clearEvents" class="clearEvents" onclick="clearEvents()">Clear</button>
+     </div>
 
 
  <%------------------- JavaScript -------------------%>
@@ -143,11 +185,12 @@
              this.shadow.innerHTML = `
             <style>
             .cours-card{
+                color: ${cardTextColor};
                 display: flex;
                 margin: 5px;
                 border-radius: 5px;
                 border: 1px solid #e4e8fe;
-                background-color: white;
+                background-color: ${cardColor};
                 width: 225px;
                 height: 200px;
             }
@@ -193,11 +236,17 @@
 
          myForm = document.forms["myForm"];
 
+         action = document.createElement('input');
+         action.type = 'hidden';
+         action.name = "action";
+         action.value = "addCours";
+
          coursName = document.createElement('input');
          coursName.type = 'hidden';
-         coursName.name = "age";
+         coursName.name = "coursName";
          coursName.value = element.id;
 
+         myForm.append(action);
          myForm.append(coursName);
 
          myForm.submit();
@@ -234,16 +283,21 @@
          String periode = cours.getPeriode();
      %>
 
+                 <script>
+                     cardColor = "white";
+                     cardTextColor = "black";
+                      <% if (selectedCours.contains(coursName)){%>
+                        cardColor = "#5667a2";
+                        cardTextColor = "white";
+                     <%}%>
 
-                 <cours-card id="<%=coursName%>" onclick="clickOnCours(this)">
+              </script>
+              <cours-card id="<%=coursName%>" onclick="clickOnCours(this)">
                      <span slot="name"><%=coursName%></span>
                      <span slot="credits"><%=credit%></span>
                      <span slot="campus"><%=campus%></span>
                      <span slot="periode"><%=periode%></span>
                  </cours-card>
-
-
-
 
 <%
     }

@@ -20,6 +20,22 @@ public class Trimestre {
         this.sections.add(section);
     }
 
+    public String getPeriode() {
+        return periode;
+    }
+
+    public String getSaison() {
+        return saison;
+    }
+
+    public String getAnnee() {
+        return annee;
+    }
+
+    public ArrayList<SectionTrimestre> getSections() {
+        return sections;
+    }
+
     @Override
     public String toString(){
 

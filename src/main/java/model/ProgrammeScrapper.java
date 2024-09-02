@@ -14,7 +14,7 @@ public class ProgrammeScrapper {
     public static String admissionLink = "https://admission.umontreal.ca/";
     public static String structure = "structure-du-programme/";
     public static String coursFilter = "cours-et-horaires/cours/";
-    private ArrayList<Cours> coursScrapped;
+    private ArrayList<Cours> coursScrapped = new ArrayList<>();
     private Programme programme;
     public ProgrammeScrapper(Programme programme) {
         this.programme = programme;
@@ -39,6 +39,7 @@ public class ProgrammeScrapper {
 
 
                 Cours cours = coursScrapper.scrap();
+                System.out.println(cours.getName());
                 this.coursScrapped.add(cours);
             }
         }
